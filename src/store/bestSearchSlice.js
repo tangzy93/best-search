@@ -39,13 +39,13 @@ export const {
 } = bestSearchSlice.actions;
 
 export const getProduct = (keywords) => dispatch => {
-  console.log('getProduct keywords', keywords);
+  console.log('getProduct keywords', keywords.join(' '));
   dispatch(setSearchLoading({
     searchLoading: true
   }));
   axios.post('http://3.141.23.218:5000/interview/keyword_search', {
     "login_token":"INTERVIEW_SIMPLY2021",
-    "search_phrase": "hat"
+    "search_phrase": keywords.join(' ')
   }).then(resp => {
     dispatch(setSearchLoading({
       searchLoading: false
