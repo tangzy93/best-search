@@ -14,7 +14,7 @@ const SubTitle = styled.div`
 `
 
 function ProductTrendCard(props) {
-  const {name, growth, search_msv = []} = props;
+  const {lineColor, name, growth, search_msv = []} = props;
   const startYear = _.get(search_msv, [0, 'date']);
   const endYear = _.get(search_msv, [search_msv.length - 1, 'date']);
   useEffect(() => {
@@ -33,8 +33,8 @@ function ProductTrendCard(props) {
       labels: formattedDatas.labels,
       datasets: [{
         label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: lineColor,
+        borderColor: lineColor,
         data: formattedDatas.data,
       }]
     };
@@ -65,7 +65,6 @@ function ProductTrendCard(props) {
         }
       }
     };
-    console.log(document.getElementById(`chart-${name}`))
     const chart = new Chart(
       document.getElementById(`chart-${name}`),
       config
@@ -80,7 +79,7 @@ function ProductTrendCard(props) {
     <Box width={210} border={'1px solid #dddddd'} borderRadius={'5px'} minHeight={200} bgcolor={'#FFFFFF'}>
       <Title>{name}</Title>
       <SubTitle style={{marginBottom: '30px'}}>Growth {growth / 100} %</SubTitle>
-      <canvas id={`chart-${name}`} width={'210px'} height={'210px'}/>
+      <canvas id={`chart-${name}`} width={'210px'} height={'130px'}/>
       <Stack justifyContent={'center'} alignItems={'center'} style={{padding: '10px 0'}}>
         <SubTitle>
           {startYear} - {endYear}

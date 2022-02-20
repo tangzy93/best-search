@@ -41,7 +41,7 @@ function Search() {
             {
               productTrends.map((item, index) => (
                 <Grid item key={index} xs={1} sm={1} md={1}>
-                  <ProductTrendCard {...item} />
+                  <ProductTrendCard lineColor={index % 2 === 0 ? 'rgb(156, 188, 218)' : 'rgb(159, 198, 181)'} {...item} />
                 </Grid>
               ))
             }
